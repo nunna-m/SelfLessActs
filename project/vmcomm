@@ -1,0 +1,43 @@
+pip install flask-restful
+pip install -U flask-cors
+pip3 install flask-mysql
+
+sudo apt install mysql-client-core-5.7
+sudo apt-get install mysql-server
+sudo mysql -u root or sudo mysql -uroot -p
+/mysql will start
+	CREATE DATABASE cc;
+	exit
+sudo mysql -h localhost -P 3306 -u root -p cc
+//loads up mysql
+//inside it do the following
+	drop user user@localhost;
+	flush privileges;
+	CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+	GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
+	
+	
+	create table user(username varchar(50),password varchar(50),primary key(username));
+	create table category(categoryname varchar(100) primary key, numberofacts bigint);
+	
+	//create table act(actid int AUTO_INCREMENT,username varchar(50), posttime timestamp, caption varchar(250), upvotes int,image varchar(250),category varchar(100), primary key(actid), foreign key(username) references user(username) ON DELETE SET NULL ON UPDATE CASCADE);
+
+	create table act(actid int AUTO_INCREMENT,username varchar(50), posttime timestamp, caption varchar(250), upvotes int,image varchar(250),category varchar(100), primary key(actid));
+
+	ALTER TABLE act CHANGE posttime posttime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+	insert into user values('anonymous','blah');
+
+
+//from here on not required
+	insert into user values('maanvi','df3493489abcdedede');
+	insert into user values('sai','df349343239abcdedede');
+	insert into user values('megz','df349348123239abcdedede');
+	insert into user values('nandos','df3493489a45435daeddbcdedede');
+
+	insert into act(username,posttime,caption,upvotes,image,category) values('sai','2019-02-19 12:00:00','test',3,'/blah.jpeg','cats');
+	insert into act(username,posttime,caption,upvotes,image,category) values('nandos','2019-02-19 12:00:00','test',3,'/blah.jpeg','cats');
+	insert into act(username,posttime,caption,upvotes,image,category) values('nandos','2019-02-19 12:00:00','test',3,'/blah.jpeg','dogs');
+
+	insert into category(categoryname,numberofacts) (select category,count(*) from act group by category);
+
+	

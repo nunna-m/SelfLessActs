@@ -1,0 +1,9 @@
+load-balancer-570395361.us-east-1.elb.amazonaws.com
+
+acts : 18.210.123.131
+ssh -i "first-key-pair.pem" ubuntu@ec2-18-210-123-131.compute-1.amazonaws.com
+users : 34.236.27.23
+ssh -i "first-key-pair.pem" ubuntu@ec2-34-236-27-23.compute-1.amazonaws.com
+
+
+docker run -d -p 8000:3000 --network mynet --entrypoint='./acts.sh' --name=act8000 acts
