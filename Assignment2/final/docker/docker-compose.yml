@@ -1,0 +1,7 @@
+nginx:
+  build: .
+  volumes:
+   - ./website:/usr/share/nginx/html
+  ports:
+   - "9000:80"
+   - "27017:27017"

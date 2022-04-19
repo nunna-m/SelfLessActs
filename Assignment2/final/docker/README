@@ -1,0 +1,12 @@
+//TERMINAL 1:
+docker-compose down
+docker-compose up --build --force-recreate
+//TERMINAL 2:
+docker ps -a
+//Find the container ID of the container you just created
+//assuming f144c53feb21 is the contianer id,
+docker exec -it f144c53feb21 sh
+mongo --version
+mongod --bind_ip 0.0.0.0
+//TEMRINAL 3
+mongo
