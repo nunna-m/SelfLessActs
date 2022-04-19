@@ -1,0 +1,2 @@
+/usr/bin/mysqld --user=root &
+nginx -g "daemon on;"
